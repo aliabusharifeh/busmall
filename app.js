@@ -151,6 +151,6 @@ function handleUserClick(event) {
         
                 let liElement = document.createElement('li');
                 list.appendChild(liElement);
-                liElement.textContent = `${allGoats[i].name} has ${allGoats[i].votes}  votes and was seen ${allGoats[i].shown} times. `;
+                liElement.textContent = `${allGoats[i].name} has ${allGoats[i].votes} votes and shown ${allGoats[i].shown}times `;
             }
         }
