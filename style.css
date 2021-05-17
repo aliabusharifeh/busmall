@@ -128,7 +128,7 @@ header{
 }
 #edit {
     text-align: center;
-    background: #4b7c74; 
+    background: #06463b; 
     line-height: 100px;
     font-family: 'Dancing Script', cursive;
     color: #06463b ;
@@ -160,4 +160,8 @@ nav ul li a{
     font-family: 'Dancing Script', cursive;
     font-size: 1.2em;
 
+}
+
+#myChart{
+    background-color: #06463b;
 }

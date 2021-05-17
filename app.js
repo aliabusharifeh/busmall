@@ -2,36 +2,36 @@
 
 
 
-// getting elements Globally
 let leftImageElement = document.getElementById('left-image');
 let rightImageElement = document.getElementById('right-image');
 let centerImageElement=document.getElementById('center-image');
 
 
-// global variables
 let leftImageIndex;
 let rightImageIndex;
 let centerImageIndex;
 
-// global counters
 let maxAttempts = 25;
 let userAttemptsCounter = 0;
 
+let goatsNames = [];
 
-// global array for  all the objects
+let goatVotes = [];
+
+let goatShown = [];
+
 let allGoats = [];//
 
 let ShownImgs=[];
 let clickedImgs=[];
 
-// constructor function
 function GoatImage(name, source) {
     this.name = name;
     this.source = source;
-    // votes
-    this.votes = 0;
+        this.votes = 0;
     this.shown=0;
     allGoats.push(this);
+    goatsNames.push(this.name);
 }
 new GoatImage('bag','images/bag.jpg'); //0
 new GoatImage('banana', 'images/banana.jpg'); //1
@@ -54,25 +54,15 @@ new GoatImage('water-can', 'images/water-can.jpg');
 new GoatImage('wine-glass', 'images/wine-glass.jpg');
 
 
-// random function to generate index
 function generateRandomIndex() {
     return Math.floor(Math.random() * allGoats.length);
 }
 
-// console.log(Math.floor(Math.random() * allGoats.length)); //0-4
-
-// show goat images
 function renderThreeImages() {
     leftImageIndex = generateRandomIndex();
     rightImageIndex = generateRandomIndex();
     centerImageIndex =generateRandomIndex();
 
-    // while
-    // while (leftImageIndex === rightImageIndex) {
-    //     rightImageIndex = generateRandomIndex();
-    // }
-
-    // do-while
     do {
         leftImageIndex = generateRandomIndex();
         rightImageIndex = generateRandomIndex();
@@ -80,18 +70,17 @@ function renderThreeImages() {
 
     } while (leftImageIndex === rightImageIndex === centerImageIndex);
 
-    // console.log(leftImageIndex);
-    // console.log(rightImageIndex);
-
-    // console.log(allGoats[leftImageIndex]);
-    // console.log(allGoats[rightImageIndex]);
 
 
-    // give it src attribute
+
     leftImageElement.src = allGoats[leftImageIndex].source;
     rightImageElement.src = allGoats[rightImageIndex].source;
     centerImageElement.src=allGoats[centerImageIndex].source;
-    
+
+    centerImageElement.alt = allGoats[centerImageIndex].name;
+    leftImageElement.alt = allGoats[leftImageIndex].name;
+    rightImageElement.alt = allGoats[rightImageIndex].name;
+
     allGoats[leftImageIndex].shown++;
 allGoats[centerImageIndex].shown++;
 allGoats[rightImageIndex].shown++;
@@ -99,19 +88,17 @@ allGoats[rightImageIndex].shown++;
 
 renderThreeImages();
 
-// event listener
+
 
 leftImageElement.addEventListener('click', handleUserClick);
 rightImageElement.addEventListener('click', handleUserClick);
 centerImageElement.addEventListener('click',handleUserClick);
 
 function handleUserClick(event) {
-    // console.log(event.target.id);
-    // userAttemptsCounter=userAttemptsCounter+1;
+
+
     userAttemptsCounter++;
-    console.log(userAttemptsCounter);
-    if (userAttemptsCounter <= maxAttempts) {
-        console.log(userAttemptsCounter);
+        if (userAttemptsCounter <= maxAttempts) {
 
         if (event.target.id === 'left-image') {
             allGoats[leftImageIndex].votes = allGoats[leftImageIndex].votes + 1;
@@ -125,8 +112,7 @@ function handleUserClick(event) {
             allGoats[rightImageIndex].votes = allGoats[rightImageIndex].votes + 1;
 
         }
-        // the used ones
-        // console.log(allGoats);
+
 
         renderThreeImages();
     } else {
@@ -134,23 +120,48 @@ function handleUserClick(event) {
         rightImageElement.removeEventListener('click', handleUserClick);
         centerImageElement.removeEventListener('click',handleUserClick);
         
+
+
+
+        for (let i = 0; i < allGoats.length; i++) {
+            goatVotes.push(allGoats[i].votes);
+            goatShown.push(allGoats[i].shown);
+        }
+        viewChart();
     }
 }
-        console.log(allGoats);
+console.log(allGoats);
 
-        // getting the element
-        let list = document.getElementById('result');
-        let button = document.getElementById('res');
-        button.addEventListener('click',showResult);
-        
-        function showResult(){
-            for (let i = 0; i < allGoats.length; i++) {
-                ShownImgs.push(allGoats[i].shown);
-                clickedImgs.push(allGoats[i].votes);
-        
-        
-                let liElement = document.createElement('li');
-                list.appendChild(liElement);
-                liElement.textContent = `${allGoats[i].name} has ${allGoats[i].votes} votes and shown ${allGoats[i].shown}times `;
-            }
+
+
+function viewChart() {
+
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: goatsNames,
+            datasets: [{
+                    label: '# of goat Votes',
+                    data: goatVotes,
+                    backgroundColor: 'black',
+                    borderColor: 'black',
+                    borderWidth: 1
+                },
+                {
+                    label: '# of goat shown',
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    data: goatShown
+                }
+            ]
+        },
+        options: {
+
         }
+    });
+
+}
+
+
+
