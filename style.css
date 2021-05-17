@@ -1,0 +1,163 @@
+/** {
+    box-sizing: border-box;
+}
+
+body {
+    background: #839b97;
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) rgba 100%);
+}
+
+header {
+    background: #4b7c74;
+    width: 100%;
+}
+
+nav {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+nav ul {
+    margin: auto;
+    display: block;
+    max-width: 660px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+main>* {
+    float: left;
+}
+
+main> :nth-child(odd) {
+    width: 25%
+}
+
+main> :nth-child(2) {
+    width: 50%;
+}
+
+main ul,
+main li {
+    padding: 0;
+    margin: 10px 0;
+}
+
+aside {
+    padding-right: 30px;
+}
+
+
+img {
+    max-height: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+header li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 40px 20px 0px;
+    font-size: 1.2em;
+    font-family: 'Dancing Script', cursive;
+}
+
+footer {
+    background: #4b7c74;
+    width: 100%;
+    height: 100px;
+    clear: both;
+}
+
+footer div {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 10px;
+}
+
+p {
+    line-height: 100px;
+    font-family: 'Dancing Script', cursive;
+}
+
+section div {
+    padding: 7px;
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+}*/
+
+
+/* footer{padding: 7px;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+} */
+/*#left-image
+{
+background-position: left center;
+}
+#right-image
+{
+    background-position: right center;
+}
+#center-image
+{
+    background-position: center;
+}*/
+body{
+    background: #839b97;
+}
+header li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 40px 20px 0px;
+    font-size: 1.2em;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+
+header{
+    background: #4b7c74;
+}
+#edit {
+    text-align: center;
+    background: #4b7c74; 
+    line-height: 100px;
+    font-family: 'Dancing Script', cursive;
+    color: #06463b ;
+}
+#left-image{
+    width:300px;
+    height: 500px;
+    float: left;
+}
+#center-image{
+    float:center;
+    width:730px;
+    height: 500px;
+}
+#right-image{
+    width:300px;
+    height: 500px;
+    float: right;
+}
+nav ul li a{
+    text-align: center;
+    color :#06463b;
+    text-decoration: none;
+    margin:70px;
+}
+#result{
+    text-align: center;
+    color :#06463b;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2em;
+
+}
