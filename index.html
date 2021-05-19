@@ -5,7 +5,6 @@
     <title>BUSMALL</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
     <header>
         <nav>
@@ -17,25 +16,42 @@
             </ul>
         </nav>
     </header>
+
     <main>
-        <!-- code here -->
-        <div id="images-div">
-            <img id="left-image" src="" alt="" />
-            <img id="right-image" src="" alt="" />
-            <img id="center-image" src="" alt=""/>
+
+
+        <div id="divder">
+        <label for="userInput"> Attempts Number:</label>
+        <br>
+        <input type="number" placeholder="Insert the number of attempts" id="userInput" name="userInput">
+        <br>
+         <button id="sumbit-btn" type="submit">submit</button>
         </div>
-        <!--<ul id="result"></ul>
-        <button id="res">RESULT</button>-->
-        
-    </main>
-    <footer id="edit">
-        <div>
-            
-            <canvas id="myChart" width="100px" height="100px"></canvas>
-        </div>
+
+   
+        <div id="container-div">
+
+
+            <div id="image-div">
+                <img id="left-image" src="" alt="">
+                <img id="center-image" src="" alt="">
+                <img id="right-image" src="" alt="">
+            </div>
+            <button id="show-btn" type="submit" >RESULT</button>
+            <div id="result-div">
+                    <ul id="result-list"></ul>
+            </div>
+    </div>
+
+</main>
+
+<footer id="edit">
+    <div>
+        <canvas id="myChart" width="400" height="100" margin-left= "200"></canvas>
+    </div>
+    
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="app.js"></script>
 </body>
-
 </html>
