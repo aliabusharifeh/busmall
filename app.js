@@ -1,35 +1,35 @@
 'use strict';
 
 
-var allGoats = [];
+let allGoats = [];
 
-var leftImageIndex;
-var centerImageIndex;
-var rightImageIndex;
+let leftImageIndex;
+let centerImageIndex;
+let rightImageIndex;
 
-var leftImage = document.getElementById('left-image');
-var rightImage = document.getElementById('right-image');
-var centerImage = document.getElementById('center-image');
-var divImage = document.getElementById('image-div');
+let leftImage = document.getElementById('left-image');
+let rightImage = document.getElementById('right-image');
+let centerImage = document.getElementById('center-image');
+let divImage = document.getElementById('image-div');
 
-var maxAttempts = 25;
-var userAttemptsCounter = 0;
+let maxAttempts = 25;
+let userAttemptsCounter = 0;
 
-var imageName= [];
-var goatVotes=[];
-var shown=[];
-var previousIndexs= [];
+let imageName= [];
+let goatVotes=[];
+let shown=[];
+let previousIndexs= [];
 
-var previousLeftIndex = -1;
-var previousRightIndex = -1;
-var previousCenterIndex = -1;
+let previousLeftIndex = -1;
+let previousRightIndex = -1;
+let previousCenterIndex = -1;
 
 
-var btnSubmit= document.getElementById('sumbit-btn');
+let btnSubmit= document.getElementById('sumbit-btn');
 btnSubmit.addEventListener('click', submitForm);
 
 
-var showResult= document.getElementById('show-btn');
+let showResult= document.getElementById('show-btn');
 showResult.addEventListener('click', showFinalResult);
 
 
@@ -125,13 +125,13 @@ function submitForm(){
 }
 
 function saveData(){
-    var insertedRounds = JSON.stringify(allGoats);
+    let insertedRounds = JSON.stringify(allGoats);
     localStorage.setItem('rounds', insertedRounds);
 }
 
 function getData(){
-    var list = localStorage.getItem('rounds');
-    var listJS = JSON.parse(list);
+    let list = localStorage.getItem('rounds');
+    let listJS = JSON.parse(list);
     if (listJS){
         allGoats= listJS;
     }
@@ -171,10 +171,10 @@ function imageListener(event) {
 
 function showFinalResult(){
 
-    var resultsList = document.getElementById('result-list');
-        var finalResult;
+    let resultsList = document.getElementById('result-list');
+        let finalResult;
         getData();
-        for (var i = 0; i < allGoats.length; i++) {
+        for (let i = 0; i < allGoats.length; i++) {
             finalResult = document.createElement('li');
             finalResult.textContent = allGoats[i].name + ' has been shown ' +
             allGoats[i].imageShownNum + ' times and has been clicked ' +
@@ -190,12 +190,12 @@ function showFinalResult(){
 
 function showChart(){
     //getData();
-    for (var i=0; i< allGoats.length; i++){
+    for (let i=0; i< allGoats.length; i++){
         goatVotes.push(allGoats[i].productClicked);
         shown.push(allGoats[i].imageShownNum);
     }
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
 
